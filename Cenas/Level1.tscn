@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dy2glglxcwvgh"]
+[gd_scene load_steps=11 format=3 uid="uid://dy2glglxcwvgh"]
 
 [ext_resource type="PackedScene" uid="uid://dfcfjjwt577rg" path="res://Prefabs/Player.tscn" id="1_qivvl"]
 [ext_resource type="PackedScene" uid="uid://jlnqnex0r78l" path="res://Prefabs/player_2.tscn" id="2_v5yab"]
 [ext_resource type="Texture2D" uid="uid://dhht6e6el86qb" path="res://Images/StarWars.png" id="3_mtwtq"]
+[ext_resource type="Script" path="res://Scripts/lifes.gd" id="4_btwve"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uk621"]
 size = Vector2(642.375, 53)
@@ -52,31 +53,6 @@ position = Vector2(536, 560)
 position = Vector2(378, 473)
 zoom = Vector2(2.5, 2.5)
 
-[node name="ProgressBar" type="ProgressBar" parent="Camera2D"]
-offset_left = 54.0
-offset_top = -121.0
-offset_right = 219.0
-offset_bottom = -114.0
-theme_override_styles/background = SubResource("StyleBoxFlat_08bpd")
-theme_override_styles/fill = SubResource("StyleBoxFlat_x4w44")
-step = 1.0
-value = 80.0
-fill_mode = 1
-show_percentage = false
-
-[node name="ProgressBar2" type="ProgressBar" parent="Camera2D"]
-modulate = Color(1, 0, 0, 1)
-self_modulate = Color(1, 0, 0, 1)
-offset_left = -218.0
-offset_top = -121.0
-offset_right = -53.0
-offset_bottom = -114.0
-theme_override_styles/background = SubResource("StyleBoxFlat_dq5xi")
-theme_override_styles/fill = SubResource("StyleBoxFlat_w0xd0")
-step = 1.0
-value = 80.0
-show_percentage = false
-
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -88,3 +64,31 @@ offset_right = 1434.0
 offset_bottom = 1067.0
 scale = Vector2(0.385, 0.385)
 texture = ExtResource("3_mtwtq")
+
+[node name="Lifes" type="Node2D" parent="."]
+script = ExtResource("4_btwve")
+
+[node name="Life1" type="ProgressBar" parent="Lifes"]
+offset_left = 432.0
+offset_top = 352.0
+offset_right = 597.0
+offset_bottom = 359.0
+theme_override_styles/background = SubResource("StyleBoxFlat_08bpd")
+theme_override_styles/fill = SubResource("StyleBoxFlat_x4w44")
+step = 1.0
+value = 80.0
+fill_mode = 1
+show_percentage = false
+
+[node name="Life2" type="ProgressBar" parent="Lifes"]
+modulate = Color(1, 0, 0, 1)
+self_modulate = Color(1, 0, 0, 1)
+offset_left = 160.0
+offset_top = 352.0
+offset_right = 325.0
+offset_bottom = 359.0
+theme_override_styles/background = SubResource("StyleBoxFlat_dq5xi")
+theme_override_styles/fill = SubResource("StyleBoxFlat_w0xd0")
+step = 1.0
+value = 80.0
+show_percentage = false

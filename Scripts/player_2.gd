@@ -159,3 +159,14 @@ func _on_hit_box_body_entered(body):
 		## Desmarca o ataque
 		#is_attacking = false
 	#pass
+
+
+func _on_hurt_box_area_entered(area: Area2D) -> void:
+	
+	if area.is_in_group("Hit1"):
+		animator.play("hurt")
+		print("Tomei")
+		$AnimationPlayer.play("hurt")
+		Global.life1 -= 10
+	
+	pass 

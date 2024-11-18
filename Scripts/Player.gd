@@ -126,7 +126,7 @@ func  Hit():
 	life -= 5
 	await get_tree().create_timer(0.4).timeout
 	animator.play("idle")
-	pass
+	pass 
 	
 
 func _on_timer_attack_timeout():

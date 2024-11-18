@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://dfcfjjwt577rg"]
+[gd_scene load_steps=75 format=3 uid="uid://dfcfjjwt577rg"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_sqdoo"]
 [ext_resource type="Texture2D" uid="uid://xewnoyxyg222" path="res://Sprites/Karasu_tengu/Attack_1.png" id="2_e4a0g"]
@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://de2372yfvpbih" path="res://Sprites/Karasu_tengu/Walk.png" id="4_camoi"]
 [ext_resource type="Texture2D" uid="uid://buf571gehk46k" path="res://Sprites/Karasu_tengu/Jump.png" id="4_sw2ra"]
 [ext_resource type="Texture2D" uid="uid://cofthdo6ryn13" path="res://Sprites/Karasu_tengu/Attack_3.png" id="4_uekbb"]
+[ext_resource type="Texture2D" uid="uid://csd4gmavj2pdg" path="res://Sprites/Karasu_tengu/Dead.png" id="5_o6ve8"]
 [ext_resource type="Texture2D" uid="uid://d1be5pbbuqvhw" path="res://Sprites/Karasu_tengu/Run.png" id="5_ykvrm"]
+[ext_resource type="Texture2D" uid="uid://dfxvxdcibaxik" path="res://Sprites/Karasu_tengu/Hurt.png" id="6_0i0ik"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kv6t1"]
 bg_color = Color(0, 0, 0, 1)
@@ -65,6 +67,42 @@ region = Rect2(128, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_edw0c"]
 atlas = ExtResource("4_uekbb")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_miusn"]
+atlas = ExtResource("5_o6ve8")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0i67b"]
+atlas = ExtResource("5_o6ve8")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a81dm"]
+atlas = ExtResource("5_o6ve8")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ml2l"]
+atlas = ExtResource("5_o6ve8")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8c0t"]
+atlas = ExtResource("5_o6ve8")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exo6u"]
+atlas = ExtResource("5_o6ve8")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsn57"]
+atlas = ExtResource("6_0i0ik")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w86cg"]
+atlas = ExtResource("6_0i0ik")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35vo2"]
+atlas = ExtResource("6_0i0ik")
 region = Rect2(256, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8wrvf"]
@@ -265,6 +303,43 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_miusn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0i67b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a81dm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ml2l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8c0t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exo6u")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lsn57")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w86cg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35vo2")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_8wrvf")
 }, {
 "duration": 1.0,
@@ -329,6 +404,11 @@ animations = [{
 "loop": true,
 "name": &"jump",
 "speed": 10.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -431,8 +511,8 @@ show_percentage = false
 texture_filter = 1
 position = Vector2(3, -34)
 sprite_frames = SubResource("SpriteFrames_ntmdx")
-animation = &"attack2"
-frame = 3
+animation = &"hurt"
+frame = 2
 frame_progress = 1.0
 
 [node name="Shape" type="CollisionShape2D" parent="."]
@@ -454,8 +534,7 @@ target_position = Vector2(-6, 20)
 [node name="RayCastDireita" type="RayCast2D" parent="Raycasts_Pulo"]
 target_position = Vector2(7, 20)
 
-[node name="HitBox" type="Area2D" parent="."]
-visible = false
+[node name="HitBox" type="Area2D" parent="." groups=["Hit1"]]
 
 [node name="Hit1" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(45, -18)
