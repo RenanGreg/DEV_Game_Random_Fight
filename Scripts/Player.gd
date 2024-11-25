@@ -10,12 +10,14 @@ extends CharacterBody2D
 @onready var timer_attack: Timer = $Timer_Attack
 @onready var delay_attack: Timer = $Delay_Attack
 
+
 var dir 
-var gravity = 6000
+var gravity = 7000
 var pode_atacar = true
 var attack_index = 0
 var is_attacking = false
-var life = 2
+var life = 2 
+
 
 func _set_health(new_health):
 	if new_health <= 0:
@@ -34,6 +36,7 @@ func _set_health(new_health):
 		timer.start(0.5)
 	pass
 	
+	
 
 @onready var animator = $AnimSprite
 
@@ -42,6 +45,8 @@ func _physics_process(delta):
 	Animations()
 	Attack()
 	pass 
+	
+	
 	
 	
 func Move(delta): 
@@ -84,12 +89,16 @@ func Attack():
 		$Timer_Attack.wait_time = 0.8
 		timer_attack.start()  # Inicia o temporizador do ataque
 		
+		
+		
 		attack_index += 1
 		print(attack_index)
 		$HitBox/Hit1.disabled = false
 		if attack_index >= 3:
 			# Se o personagem atingir o número máximo de ataques consecutivos, aguarda antes de poder atacar novamente
 			delay_attack.start()
+			
+			
 			
 	if pode_atacar and Input.is_action_just_pressed("Ataque2"):
 		if animator.animation != "attack2":
@@ -144,22 +153,15 @@ func _on_delay_attack_timeout():
 	pass
 
 
-func _on_hit_box_body_entered(body):
-	if body.is_in_group("Players"):
-		body.Hit()
-	pass # Replace with function body.
 
-#
-#func _on_anim_sprite_animation_finished(anim_name):
-	#if anim_name == "attack1":
-		## A animação terminou, volta para idle
-		#animator.play("idle")
-		## Desmarca o ataque
-		#is_attacking = false
-		#
-	#if anim_name == "attack2":
-		## A animação terminou, volta para idle
-		#animator.play("idle")
-		## Desmarca o ataque
-		#is_attacking = false
-	#pass
+
+func _on_hurt_box_area_entered(area: Area2D) -> void:
+	
+	if area.is_in_group("Hit2"):
+		animator.play("hurt")
+		print("Tomei")
+		$AnimSprite.play("hurt")
+		Global.life2 -= 10
+	
+	
+	pass

@@ -1,16 +1,16 @@
-[gd_scene load_steps=89 format=3 uid="uid://jlnqnex0r78l"]
+[gd_scene load_steps=88 format=3 uid="uid://jlnqnex0r78l"]
 
 [ext_resource type="Script" path="res://Scripts/player_2.gd" id="1_fvpgk"]
-[ext_resource type="Texture2D" uid="uid://vlih11ndn3mv" path="res://Sprites/White_Werewolf/Attack_1.png" id="2_fakvy"]
-[ext_resource type="Texture2D" uid="uid://b7k7axrnbrp0u" path="res://Sprites/White_Werewolf/Dead.png" id="2_xyuno"]
-[ext_resource type="Texture2D" uid="uid://bvkhgsuel77bl" path="res://Sprites/White_Werewolf/Attack_2.png" id="3_6qxdr"]
-[ext_resource type="Texture2D" uid="uid://boyxvkrginbh" path="res://Sprites/White_Werewolf/Attack_3.png" id="4_q2g44"]
-[ext_resource type="Texture2D" uid="uid://6yqp2eelgi7s" path="res://Sprites/White_Werewolf/Idle.png" id="5_c7lhx"]
-[ext_resource type="Texture2D" uid="uid://05felw1iwipo" path="res://Sprites/White_Werewolf/Jump.png" id="6_epowe"]
-[ext_resource type="Texture2D" uid="uid://t7sngttj84up" path="res://Sprites/White_Werewolf/Hurt.png" id="6_knqnq"]
-[ext_resource type="Texture2D" uid="uid://txp4wnha6yqv" path="res://Sprites/White_Werewolf/Run.png" id="7_t46cj"]
-[ext_resource type="Texture2D" uid="uid://ci2x0n4x1cdv6" path="res://Sprites/White_Werewolf/Walk.png" id="8_rlvtm"]
-[ext_resource type="Texture2D" uid="uid://dbk0b15l1qsui" path="res://Sprites/White_Werewolf/Run+Attack.png" id="10_p6bug"]
+[ext_resource type="Texture2D" uid="uid://vlih11ndn3mv" path="res://Sprites/craftpix-net-786081-free-werewolf-sprite-sheets-pixel-art/White_Werewolf/Attack_1.png" id="2_fakvy"]
+[ext_resource type="Texture2D" uid="uid://b7k7axrnbrp0u" path="res://Sprites/craftpix-net-786081-free-werewolf-sprite-sheets-pixel-art/White_Werewolf/Dead.png" id="2_xyuno"]
+[ext_resource type="Texture2D" uid="uid://bvkhgsuel77bl" path="res://Sprites/craftpix-net-786081-free-werewolf-sprite-sheets-pixel-art/White_Werewolf/Attack_2.png" id="3_6qxdr"]
+[ext_resource type="Texture2D" uid="uid://boyxvkrginbh" path="res://Sprites/craftpix-net-786081-free-werewolf-sprite-sheets-pixel-art/White_Werewolf/Attack_3.png" id="4_q2g44"]
+[ext_resource type="Texture2D" uid="uid://6yqp2eelgi7s" path="res://Sprites/craftpix-net-786081-free-werewolf-sprite-sheets-pixel-art/White_Werewolf/Idle.png" id="5_c7lhx"]
+[ext_resource type="Texture2D" uid="uid://05felw1iwipo" path="res://Sprites/craftpix-net-786081-free-werewolf-sprite-sheets-pixel-art/White_Werewolf/Jump.png" id="6_epowe"]
+[ext_resource type="Texture2D" uid="uid://t7sngttj84up" path="res://Sprites/craftpix-net-786081-free-werewolf-sprite-sheets-pixel-art/White_Werewolf/Hurt.png" id="6_knqnq"]
+[ext_resource type="Texture2D" uid="uid://txp4wnha6yqv" path="res://Sprites/craftpix-net-786081-free-werewolf-sprite-sheets-pixel-art/White_Werewolf/Run.png" id="7_t46cj"]
+[ext_resource type="Texture2D" uid="uid://ci2x0n4x1cdv6" path="res://Sprites/craftpix-net-786081-free-werewolf-sprite-sheets-pixel-art/White_Werewolf/Walk.png" id="8_rlvtm"]
+[ext_resource type="Texture2D" uid="uid://dbk0b15l1qsui" path="res://Sprites/craftpix-net-786081-free-werewolf-sprite-sheets-pixel-art/White_Werewolf/Run+Attack.png" id="10_p6bug"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y6aeg"]
 bg_color = Color(0, 0, 0, 1)
@@ -289,7 +289,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"dead",
-"speed": 2.0
+"speed": 1.5
 }, {
 "frames": [{
 "duration": 1.0,
@@ -539,28 +539,9 @@ radius = 2.86356
 [sub_resource type="CircleShape2D" id="CircleShape2D_f8s4j"]
 radius = 3.00832
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ind25"]
-radius = 11.0
-height = 90.0
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fv30i"]
 radius = 32.0
 height = 66.0
-
-[sub_resource type="Animation" id="Animation_murjs"]
-resource_name = "hurt"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimSprite:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [Color(1, 1, 1, 1), Color(1, 0.168627, 0, 1), Color(1, 1, 1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_wq26v"]
 length = 0.001
@@ -577,13 +558,28 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_murjs"]
+resource_name = "hurt"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 0.168627, 0, 1), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w7v4g"]
 _data = {
 "RESET": SubResource("Animation_wq26v"),
 "hurt": SubResource("Animation_murjs")
 }
 
-[node name="Player2" type="CharacterBody2D"]
+[node name="Player2" type="CharacterBody2D" groups=["Hit1"]]
 script = ExtResource("1_fvpgk")
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
@@ -605,9 +601,8 @@ show_percentage = false
 texture_filter = 1
 position = Vector2(3, -34)
 sprite_frames = SubResource("SpriteFrames_ntmdx")
-animation = &"hurt"
-frame = 1
-frame_progress = 1.0
+animation = &"dead"
+frame_progress = 0.765885
 flip_h = true
 
 [node name="Shape" type="CollisionShape2D" parent="."]
@@ -629,7 +624,8 @@ target_position = Vector2(-6, 20)
 [node name="RayCastDireita" type="RayCast2D" parent="Raycasts_Pulo"]
 target_position = Vector2(7, 20)
 
-[node name="HitBox" type="Area2D" parent="."]
+[node name="HitBox" type="Area2D" parent="." groups=["Hit2"]]
+visible = false
 
 [node name="Hit1" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(-13, -31)
@@ -652,10 +648,6 @@ scale = Vector2(10, 10)
 shape = SubResource("CircleShape2D_f8s4j")
 disabled = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(0, -14)
-shape = SubResource("CapsuleShape2D_ind25")
-
 [node name="Delay_Attack" type="Timer" parent="."]
 one_shot = true
 
@@ -670,6 +662,5 @@ libraries = {
 }
 
 [connection signal="timeout" from="Timer_Attack" to="." method="_on_timer_attack_timeout"]
-[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="timeout" from="Delay_Attack" to="." method="_on_delay_attack_timeout"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

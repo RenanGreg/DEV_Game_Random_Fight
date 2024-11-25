@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://dfcfjjwt577rg"]
+[gd_scene load_steps=76 format=3 uid="uid://dfcfjjwt577rg"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_sqdoo"]
 [ext_resource type="Texture2D" uid="uid://xewnoyxyg222" path="res://Sprites/Karasu_tengu/Attack_1.png" id="2_e4a0g"]
@@ -485,6 +485,10 @@ height = 4.47962
 radius = 2.1515
 height = 7.54892
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c531a"]
+radius = 32.0
+height = 66.0
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_sqdoo")
 jump_velocity = -900.0
@@ -511,9 +515,8 @@ show_percentage = false
 texture_filter = 1
 position = Vector2(3, -34)
 sprite_frames = SubResource("SpriteFrames_ntmdx")
-animation = &"hurt"
-frame = 2
-frame_progress = 1.0
+animation = &"run"
+frame_progress = 0.921447
 
 [node name="Shape" type="CollisionShape2D" parent="."]
 position = Vector2(-2, -13)
@@ -535,6 +538,7 @@ target_position = Vector2(-6, 20)
 target_position = Vector2(7, 20)
 
 [node name="HitBox" type="Area2D" parent="." groups=["Hit1"]]
+visible = false
 
 [node name="Hit1" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(45, -18)
@@ -560,7 +564,12 @@ disabled = true
 [node name="Delay_Attack" type="Timer" parent="."]
 one_shot = true
 
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CapsuleShape2D_c531a")
+
 [connection signal="animation_finished" from="AnimSprite" to="." method="_on_anim_sprite_animation_finished"]
 [connection signal="timeout" from="Timer_Attack" to="." method="_on_timer_attack_timeout"]
-[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="timeout" from="Delay_Attack" to="." method="_on_delay_attack_timeout"]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
